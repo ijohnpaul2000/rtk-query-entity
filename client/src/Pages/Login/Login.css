@@ -1,0 +1,92 @@
+.login {
+  background-image: linear-gradient(
+    to right bottom,
+    #ff78c5,
+    #fb76cf,
+    #f474da,
+    #ec74e5,
+    #e275f0,
+    #b88dff,
+    #8f9fff,
+    #6dabff,
+    #38c3ff,
+    #00d8ff,
+    #1aebff,
+    #5ffbf1
+  );
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  max-width: 400px;
+  width: 100%;
+  padding: 1.5em;
+  background: white;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.2);
+}
+
+.login__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5em;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.login__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__field label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.login__field label span {
+  color: #474747;
+  font-size: 0.75rem;
+  text-decoration: dotted underline;
+}
+
+.login__field input {
+  padding: 0.75em 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  font-size: 1rem;
+}
+
+.login__form button {
+  background: #333333;
+  color: white;
+  padding: 0.75em 0.5em;
+  border-radius: 0.25em;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.login__form button:hover {
+  background: #444444;
+  scale: 0.97;
+}
+
+.auth__message--error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.5em;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
