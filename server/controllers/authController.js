@@ -19,6 +19,7 @@ const login = expressAsyncHandler(async (req, res) => {
   }
 
   res.status(200).json({
+    message: "Login successful! Redirecting...",
     id: user.id,
     username: user.username,
     date_added: user.date_added,

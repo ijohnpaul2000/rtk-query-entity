@@ -9,7 +9,7 @@ const initialState = todoAdapter.getInitialState();
 export const extendedTodoSlice = api.injectEndpoints({
   endpoints: (builder) => ({
     getTodos: builder.query({
-      query: () => "/api/applicants",
+      query: () => "/api/todos",
       transformResponse: (response) => {
         const loadedTodo = response.map((todo) => {
           return {
@@ -22,23 +22,35 @@ export const extendedTodoSlice = api.injectEndpoints({
     }),
     addTodo: builder.mutation({
       query: (newTodo) => ({
-        url: "/todos",
+        url: "/api/todos",
         method: "POST",
         body: newTodo,
       }),
       invalidatesTags: ["Todos"],
+      // async onQueryStarted(todo, { dispatch, queryFulfilled }) {
+      //   const resultAction = await dispatch(
+      //     extendedTodoSlice.endpoints.getTodos.initiate()
+      //   );
+      //   if (extendedTodoSlice.endpoints.getTodos.match(resultAction)) {
+      //     return;
+      //   }
+      //   const result = await queryFulfilled;
+      //   if (result.error) {
+      //     dispatch(extendedTodoSlice.endpoints.getTodos.undo());
+      //   }
+      // },
     }),
     updateTodo: builder.mutation({
       query: (todo) => ({
-        url: `/todos/${todo.id}`,
-        method: "PATCH",
+        url: `/api/todos/${todo.id}`,
+        method: "PUT",
         body: todo,
       }),
       invalidatesTags: ["Todos"],
     }),
     deleteTodo: builder.mutation({
       query: (todo) => ({
-        url: `/todos/${todo.id}`,
+        url: `/api/todos/${todo.id}`,
         method: "DELETE",
         body: todo,
       }),

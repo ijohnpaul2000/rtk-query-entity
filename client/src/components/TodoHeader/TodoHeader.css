@@ -1,0 +1,21 @@
+.todo-header {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  background: #8968be;
+  color: white;
+  padding: 0.35em 0;
+  box-shadow: 0 0.1em 0.125em rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.todo-header__menu {
+  position: absolute;
+  top: 50%;
+  right: 2em;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

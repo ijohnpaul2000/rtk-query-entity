@@ -7,7 +7,7 @@ const initialState = userAdapter.getInitialState();
 export const extendedUserSlice = api.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: () => "/api/employees",
+      query: () => "/api/users",
       transformResponse: (response) => {
         const loadedUser = response.map((user) => {
           return {
@@ -15,6 +15,13 @@ export const extendedUserSlice = api.injectEndpoints({
           };
         });
         return userAdapter.setAll(initialState, loadedUser);
+      },
+    }),
+    logoutUser: builder.mutation({
+      query: () => "/api/auth/logout",
+      invalidatesTags: ["User"],
+      transformResponse: (response) => {
+        return response;
       },
     }),
   }),
@@ -34,4 +41,4 @@ export const {
   selectEntities: selectUserEntities,
 } = userAdapter.getSelectors((state) => selectUserData(state) ?? initialState);
 
-export const { useGetUsersQuery } = extendedUserSlice;
+export const { useGetUsersQuery, useLogoutUserMutation } = extendedUserSlice;

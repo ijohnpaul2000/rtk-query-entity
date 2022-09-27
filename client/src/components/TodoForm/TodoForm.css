@@ -1,0 +1,36 @@
+.todo-form {
+  max-width: 500px;
+  width: 100%;
+  margin: 2em auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-form input {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.35em;
+  margin-bottom: 1em;
+}
+
+.todo-form select {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.35em;
+  margin-bottom: 1em;
+}
+
+.todo-form button {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.35em;
+  background: #8968be;
+  color: white;
+  cursor: pointer;
+}

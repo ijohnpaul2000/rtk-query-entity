@@ -1,0 +1,38 @@
+.single-todo {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0;
+}
+
+.single-todo__list {
+  display: flex;
+  flex-direction: column;
+  word-break: break-all;
+}
+
+.single-todo__list i {
+  margin-left: 1.5em;
+}
+
+.single-todo__list__item {
+  display: flex;
+  gap: 0.5em;
+}
+.single-todo__list h2 {
+  white-space: wrap;
+}
+
+.single-todo input {
+  width: 1rem;
+  aspect-ratio: 1/1;
+}
+
+.single-todo button {
+  padding: 0.3em;
+  font-size: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.35em;
+  background: #fa4141;
+  color: white;
+  cursor: pointer;
+}
