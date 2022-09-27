@@ -10,20 +10,25 @@ const protect = expressAsyncHandler(async (req, res, next) => {
     token = req.headers.authorization.split(" ")[1];
     try {
       if (token) {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log(token);
+        const decoded = jwt.verify(token, "CAPSTONE_CEIT");
+        console.log({ decoded });
         //find the user by id
         const user = await User.findOne({
-          where: { _userId: decoded._userId },
+          where: { id: decoded.id },
         });
+        console.log(user);
         //attach the user to the request object
         req.user = user;
 
         next();
       }
     } catch (error) {
+      console.log(error);
       throw new Error("Not authorized token expired, login again");
     }
   } else {
+    console.log("Why error");
     throw new Error("There is no token attached to the header");
   }
 });

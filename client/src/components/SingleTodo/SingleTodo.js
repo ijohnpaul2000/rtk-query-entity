@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   selectTodoById,
   useDeleteTodoMutation,
@@ -12,6 +13,7 @@ const SingleTodo = ({ todoId }) => {
 
   const [updateTodo] = useUpdateTodoMutation();
   const [deleteTodo] = useDeleteTodoMutation();
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     updateTodo({
@@ -24,6 +26,7 @@ const SingleTodo = ({ todoId }) => {
     deleteTodo({
       id: todo.id,
     });
+    navigate("/");
   };
 
   return (

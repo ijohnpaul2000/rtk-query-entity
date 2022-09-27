@@ -6,6 +6,7 @@ const {
   PUTTodoById,
   DELETETodo,
 } = require("../controllers/todoController");
+const { protect } = require("../middlewares/authMiddleware");
 
 router.post("/", POSTTodo);
 router.get("/", GETTodos);

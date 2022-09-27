@@ -25,13 +25,24 @@ const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 //   return result;
 // };
 
-const baseQuery = fetchBaseQuery({ baseUrl: BASE_URL });
+const baseQuery = fetchBaseQuery({
+  baseUrl: BASE_URL,
+});
+
+const baseQueryAuth = fetchBaseQuery({
+  baseUrl: BASE_URL,
+  prepareHeaders: (headers, { getState }) => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+    return headers;
+  },
+});
 
 const baseQueryWithAuth = async (args, api, extraOptions) => {
-  let result = await baseQuery(args, api, extraOptions);
-  const token = sessionStorage.getItem("token");
+  let result = await baseQueryAuth(args, api, extraOptions);
 
-  //
   // if (result.error && result.error.status === 401) {
   //   const { data } = await axios.post(`${BASE_URL}/auth/refresh`, {
   //     refreshToken: localStorage.getItem("refreshToken"),
@@ -45,6 +56,10 @@ const baseQueryWithAuth = async (args, api, extraOptions) => {
 
   return result;
 };
+
+const isAuthenticated = sessionStorage.getItem("token")
+  ? baseQueryWithAuth
+  : baseQuery;
 
 export const api = createApi({
   reducerPath: "api",
