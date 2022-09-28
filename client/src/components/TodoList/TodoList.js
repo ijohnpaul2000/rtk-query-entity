@@ -19,6 +19,7 @@ const TodoList = () => {
   return (
     <main className="todo-list">
       <h2>Current Todo List</h2>
+      {isFetching && <p>Loading...</p>}
       {singleTodos}
     </main>
   );

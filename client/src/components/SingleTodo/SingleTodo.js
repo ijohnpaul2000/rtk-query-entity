@@ -29,13 +29,15 @@ const SingleTodo = ({ todoId }) => {
     navigate("/");
   };
 
+  console.log({ completed: todo.completed });
+
   return (
     <article className="single-todo">
       <div className="single-todo__list">
         <div className="single-todo__list__item">
           <input
             type="checkbox"
-            checked={todo.completed === "0" ? false : true}
+            checked={todo.completed}
             onChange={handleToggle}
           />
           <h2>{todo.title}</h2>
