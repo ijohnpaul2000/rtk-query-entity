@@ -11,15 +11,11 @@ const PrivateRoute = () => {
 
   let auth = sessionStorage.getItem("token") ? true : false;
 
-  // <div>
-  //   {/* {currentUser?.isAuthenticated || sessionStorage.getItem("token") ? (
-  //       <Outlet />
-  //     ) : (
-  //       <Navigate to={"/auth/login"} replace={location.pathname} />
-  //     )} */}
-  // </div>;
+  if (auth) {
+    navigate("/");
+  }
 
-  return auth ? <Outlet /> : <Navigate to="auth/login" />;
+  return auth ? <Outlet /> : <Navigate to={`/auth/login`} />;
 };
 
 export default PrivateRoute;

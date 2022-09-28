@@ -1,38 +1,74 @@
 .single-todo {
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin: 0.5em 0;
+  padding: 1em;
+  gap: 0.5em;
+  border-radius: 10px;
+  margin-bottom: 1em;
 }
 
-.single-todo__list {
+.single-todo:nth-child(odd) {
+  background-color: #ec6b6b;
+}
+
+.single-todo:nth-child(even) {
+  background-color: #7a6bec;
+}
+
+.single-todo__contents {
   display: flex;
-  flex-direction: column;
+  flex: 1;
+}
+
+.single-todo__contents input[type="checkbox"] {
+  margin: 1em 1em 1em 0;
+}
+
+.single-todo__contents--todo {
+  width: 100%;
+}
+
+.single-todo__contents--todo i {
+  color: #fff;
+}
+
+.inline-edit {
+  width: 100%;
+}
+
+.inline-edit input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.single-todo__title {
+  color: white;
   word-break: break-all;
 }
 
-.single-todo__list i {
-  margin-left: 1.5em;
-}
-
-.single-todo__list__item {
+.single-todo__buttons {
   display: flex;
-  gap: 0.5em;
-}
-.single-todo__list h2 {
-  white-space: wrap;
+  gap: 0.25em;
+  flex-direction: column;
 }
 
-.single-todo input {
-  width: 1rem;
-  aspect-ratio: 1/1;
+.single-todo__buttons button {
+  padding: 0.5em 1.25em;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.85rem;
+  color: #fff;
 }
 
-.single-todo button {
-  padding: 0.3em;
-  font-size: 1.25rem;
-  border: 1px solid #ccc;
-  border-radius: 0.35em;
-  background: #fa4141;
-  color: white;
-  cursor: pointer;
+.single-todo__buttons button:nth-child(1) {
+  background: #8035fa;
+}
+
+.single-todo__buttons button:nth-child(2) {
+  background: #f33636;
 }

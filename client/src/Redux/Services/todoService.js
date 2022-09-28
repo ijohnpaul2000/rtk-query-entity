@@ -11,7 +11,7 @@ export const extendedTodoSlice = api.injectEndpoints({
     getTodos: builder.query({
       query: () => "/api/todos",
       transformResponse: (response) => {
-        // we're going to transform the response to match the format of the mysql database since it's using 1 and 0 as the boolean value
+        // we're going to transform the response to match the format of the mysql database since it's using 1 and 0 as the boolean valuew
 
         const loadedTodo = response.map((todo) => {
           todo.completed === "1"

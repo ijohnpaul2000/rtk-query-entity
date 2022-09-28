@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,6 +9,9 @@ import {
 import "./SingleTodo.css";
 
 const SingleTodo = ({ todoId }) => {
+  const [isEditingInline, setIsEditingInline] = useState(false);
+  const [inlineEditValue, setInlineEditValue] = useState("");
+
   const todo = useSelector((state) => selectTodoById(state, todoId));
 
   const [updateTodo] = useUpdateTodoMutation();
@@ -22,6 +25,8 @@ const SingleTodo = ({ todoId }) => {
     });
   };
 
+  const handleUpdate = () => {};
+
   const handleDelete = () => {
     deleteTodo({
       id: todo.id,
@@ -29,24 +34,40 @@ const SingleTodo = ({ todoId }) => {
     navigate("/");
   };
 
-  console.log({ completed: todo.completed });
+  console.log(todo);
 
   return (
     <article className="single-todo">
-      <div className="single-todo__list">
-        <div className="single-todo__list__item">
-          <input
-            type="checkbox"
-            checked={todo.completed}
-            onChange={handleToggle}
-          />
-          <h2>{todo.title}</h2>
+      {/* LEFT CONTROLS */}
+
+      <div className="single-todo__contents">
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={handleToggle}
+        />
+        <div className="single-todo__contents--todo">
+          {isEditingInline ? (
+            <div className="inline-edit">
+              <input
+                type="text"
+                value={inlineEditValue}
+                onChange={(e) => setInlineEditValue(e.target.value)}
+              />
+            </div>
+          ) : (
+            <p className="single-todo__title">{todo.title}</p>
+          )}
+
+          <i>Todo by: {todo.user}</i>
         </div>
-        <i>Todo by: {todo.user}</i>
       </div>
-      <div className="button-wrapper">
+      <div className="single-todo__buttons">
+        <button onClick={() => {}}>Update</button>
         <button onClick={handleDelete}>Delete</button>
       </div>
+
+      {/* RIGHT CONTROLS */}
     </article>
   );
 };
